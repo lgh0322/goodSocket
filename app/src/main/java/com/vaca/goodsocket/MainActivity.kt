@@ -2,7 +2,9 @@ package com.vaca.goodsocket
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import io.socket.client.IO
+import io.socket.emitter.Emitter
 
 class MainActivity : AppCompatActivity() {
 
@@ -12,5 +14,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         mSocket.connect()
+        mSocket.on("loginSuccess"
+        ) { ga->
+            Log.e("fuck",ga[0] as String)
+        }
     }
 }
